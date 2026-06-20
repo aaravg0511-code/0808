@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ff9a9e,#fad0c4);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    color:white;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.slider{
+    height:100vh;
+    position:relative;
+}
+
+.slide{
+    display:none;
+    width:100%;
+    height:100vh;
+    padding:25px;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    animation:fadeIn .8s ease;
+}
+
+.slide.active{
+    display:flex;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateX(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.card{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(12px);
+    padding:30px;
+    border-radius:25px;
+    max-width:850px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+p{
+    line-height:1.9;
+    font-size:1rem;
+}
+
+.controls{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+    z-index:999;
+}
+
+button{
+    border:none;
+    padding:12px 24px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.nextBtn{
+    background:white;
+    color:#ff4f81;
+}
+
+.prevBtn{
+    background:#ff4f81;
+    color:white;
+}
+
+.yesBtn{
+    background:white;
+    color:#ff4f81;
+    margin:10px;
+}
+
+.noBtn{
+    background:#ff4f81;
+    color:white;
+    margin:10px;
+}
+
+.musicBtn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    z-index:999;
+    background:white;
+    color:#ff4f81;
+}
+
+.heart{
+    font-size:70px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+.letter{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.15);
+}
+
+#finalMessage{
+    font-size:1.3rem;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.floating-heart{
+    position:fixed;
+    bottom:-20px;
+    color:white;
+    font-size:20px;
+    animation:floatUp linear forwards;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    p{
+        font-size:.95rem;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .controls{
+        width:95%;
+        justify-content:center;
+    }
+
+    button{
+        padding:10px 18px;
+        font-size:14px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <!-- Replace with your own MP3 -->
+    <source src="your-music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="musicBtn" onclick="toggleMusic()">
+    🎵 Music
+</button>
+
+<div class="slider">
+
+    <!-- PAGE 1 -->
+    <section class="slide active">
+        <div class="card">
+            <div class="heart">❤️</div>
+            <h1>For My Beautiful Girlfriend</h1>
+            <p>
+                I made this website because I have something important
+                to tell you...
+                <br><br>
+                Please go through every page.
+                Every word comes from my heart.
+            </p>
+        </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="slide">
+        <div class="card">
+            <h1>😔 I'm Sorry</h1>
+            <p>
+                I know I hurt you, and for that I am deeply sorry.
+                Looking back, I realize how much pain my actions caused,
+                and it breaks my heart knowing that I was the reason
+                behind your sadness.
+
+                <br><br>
+
+                You deserve kindness, patience, respect, and love.
+                If I made you feel anything less than that,
+                then I truly regret it.
+
+                <br><br>
+
+                I know apologies alone don't fix everything.
+                That's why I don't want these words to be empty.
+                I want to show you through my actions that I can do better.
+            </p>
+        </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="slide">
+        <div class="card">
+            <h1>💕 What You Mean To Me</h1>
+            <p>
+                You are one of the most precious people in my life.
+
+                <br><br>
+
+                Your smile brightens my day.
+                Your voice calms my mind.
+                Your presence makes everything feel better.
+
+                <br><br>
+
+                Every memory we've made together means the world to me.
+                Every laugh, every conversation, every little moment
+                is something I cherish.
+
+                <br><br>
+
+                I never want you to doubt how important you are to me.
+            </p>
+        </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="slide">
+        <div class="card">
+            <h1>🤝 My Promise</h1>
+            <p>
+                I promise to learn from my mistakes.
+
+                <br><br>
+
+                I promise to listen more.
+                I promise to communicate better.
+                I promise to be more understanding.
+
+                <br><br>
+
+                Most importantly,
+                I promise that my actions will speak louder than my words.
+
+                <br><br>
+
+                I want to grow into someone who deserves your love.
+            </p>
+
+            <br>
+
+            <button onclick="openLetter()">
+                💌 Open Secret Letter
+            </button>
+
+            <div class="letter" id="letter">
+                My Love,
+                <br><br>
+                If I could go back and change the moment I hurt you,
+                I would do it without hesitation.
+
+                <br><br>
+                Thank you for every smile you've given me,
+                every memory we've shared,
+                and every time you've stood beside me.
+
+                <br><br>
+                I love you more than words can express.
+                ❤️
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section class="slide">
+        <div class="card">
+            <h1>❤️ Can You Forgive Me?</h1>
+
+            <button class="yesBtn" onclick="forgiveMe()">
+                Yes ❤️
+            </button>
+
+            <button class="noBtn" id="noBtn">
+                Not Yet 😅
+            </button>
+
+            <div id="finalMessage"></div>
+        </div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="slide" id="lovePage">
+        <div class="card">
+            <h1>💖 I LOVE YOU 💖</h1>
+
+            <p>
+                Thank you for giving me another chance.
+                <br><br>
+                I promise to cherish you,
+                appreciate you,
+                and love you every day.
+                <br><br>
+                Forever and always ❤️
+            </p>
+
+            <div style="font-size:80px;margin-top:20px;">
+                💖❤️💖
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="controls">
+    <button class="prevBtn" onclick="prevSlide()">⬅ Previous</button>
+    <button class="nextBtn" onclick="nextSlide()">Next ➡</button>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index){
+    slides.forEach(slide=>slide.classList.remove("active"));
+    slides[index].classList.add("active");
+}
+
+function nextSlide(){
+    if(current < slides.length - 1){
+        current++;
+        showSlide(current);
+    }
+}
+
+function prevSlide(){
+    if(current > 0){
+        current--;
+        showSlide(current);
+    }
+}
+
+function openLetter(){
+    document.getElementById("letter").style.display="block";
+}
+
+function toggleMusic(){
+    const music = document.getElementById("bgMusic");
+
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
+}
+
+function forgiveMe(){
+    document.getElementById("finalMessage").innerHTML =
+        "💖 Thank you for forgiving me. 💖";
+
+    current = 5;
+    showSlide(current);
+
+    startConfetti();
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+    const x = Math.random()*200-100;
+    const y = Math.random()*100-50;
+
+    noBtn.style.transform =
+    `translate(${x}px,${y}px)`;
+});
+
+showSlide(0);
+
+/* FLOATING HEARTS */
+function createHeart(){
+    const heart = document.createElement("div");
+
+    heart.classList.add("floating-heart");
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=
+    Math.random()*3+4+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },7000);
+}
+
+setInterval(createHeart,500);
+
+/* CONFETTI */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let confetti=[];
+
+function startConfetti(){
+
+    for(let i=0;i<250;i++){
+        confetti.push({
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height-canvas.height,
+            r:Math.random()*6+2,
+            d:Math.random()*250,
+            color:`hsl(${Math.random()*360},100%,70%)`
+        });
+    }
+
+    animateConfetti();
+}
+
+function animateConfetti(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    confetti.forEach(c=>{
+        ctx.beginPath();
+        ctx.fillStyle=c.color;
+        ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
+        ctx.fill();
+
+        c.y += 3;
+        c.x += Math.sin(c.d);
+
+        if(c.y > canvas.height){
+            c.y = -10;
+        }
+    });
+
+    requestAnimationFrame(animateConfetti);
+}
+
+window.addEventListener("resize",()=>{
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+});
+</script>
+
+</body>
+</html>
